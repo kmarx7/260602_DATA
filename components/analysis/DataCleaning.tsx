@@ -381,18 +381,19 @@ export default function DataCleaning() {
         ))}
       </div>
 
-      {/* 처리 완료 배너 */}
+      {/* 처리 완료 → 다음 단계 버튼 */}
       {applied && (
-        <div className="flex items-center gap-3 px-4 py-3 bg-green-50 border border-green-200 rounded-xl text-sm text-green-700">
-          <CheckCircle2 className="w-4 h-4 shrink-0" />
-          <span>처리가 완료됐습니다. 이제 분석 메뉴가 깨끗한 데이터를 기준으로 동작합니다.</span>
-          <button
-            onClick={() => router.push('/dashboard/overview')}
-            className="ml-auto flex items-center gap-1 text-xs text-green-700 font-semibold underline"
-          >
-            분석 시작 <ChevronRight className="w-3 h-3" />
-          </button>
-        </div>
+        <button
+          onClick={() => router.push('/dashboard/overview')}
+          className="w-full flex items-center justify-between gap-3 px-6 py-4 bg-green-600 text-white rounded-2xl hover:bg-green-700 transition-colors shadow-lg shadow-green-100"
+        >
+          <div className="text-left">
+            <p className="text-xs text-green-200 mb-0.5">✅ 클리닝 완료! 다음 단계</p>
+            <p className="text-base font-bold">📊 분석 대시보드로 이동</p>
+            <p className="text-xs text-green-200 mt-0.5">깨끗해진 데이터로 10가지 분석을 시작합니다</p>
+          </div>
+          <ChevronRight className="w-7 h-7 shrink-0" />
+        </button>
       )}
 
       {/* 탭 */}
@@ -403,6 +404,20 @@ export default function DataCleaning() {
 
       {tab === 'missing' && <MissingTab onApply={handleApply} />}
       {tab === 'outlier' && <OutlierTab onApply={handleApply} />}
+
+      {/* 클리닝 없이 건너뛰기 */}
+      {!applied && (
+        <div className="flex items-center gap-3 pt-2">
+          <div className="flex-1 h-px bg-zinc-100" />
+          <button
+            onClick={() => router.push('/dashboard/overview')}
+            className="flex items-center gap-1.5 text-xs text-zinc-400 hover:text-zinc-600 transition-colors whitespace-nowrap"
+          >
+            클리닝 없이 바로 분석하기 <ChevronRight className="w-3.5 h-3.5" />
+          </button>
+          <div className="flex-1 h-px bg-zinc-100" />
+        </div>
+      )}
     </div>
   )
 }

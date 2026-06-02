@@ -77,7 +77,7 @@ export default function ColumnConfig() {
   function handleApply() {
     if (!canProceed) return
     setConfig(mapping as ColumnConfig)
-    router.push('/dashboard/overview')
+    router.push('/dashboard/treatment')
   }
 
   return (
@@ -211,7 +211,7 @@ export default function ColumnConfig() {
         <p className="text-xs text-zinc-400 mt-1.5">위 5행은 샘플 데이터입니다. 전체 {rows.length.toLocaleString()}행 중 일부입니다.</p>
       </div>
 
-      {/* 설정 요약 + 시작 버튼 */}
+      {/* 설정 요약 + 다음 단계 버튼 */}
       <div className="rounded-2xl border border-zinc-200 bg-white p-5 space-y-4">
         <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wide">현재 설정 요약</p>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
@@ -230,11 +230,14 @@ export default function ColumnConfig() {
         <button
           onClick={handleApply}
           disabled={!canProceed}
-          className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 text-white font-bold text-sm hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          className="w-full flex items-center justify-between gap-3 px-6 py-4 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors shadow-lg shadow-blue-100"
         >
-          <CheckCircle2 className="w-4 h-4" />
-          분석 시작하기
-          <ArrowRight className="w-4 h-4" />
+          <div className="text-left">
+            <p className="text-xs text-blue-200 mb-0.5">다음 단계</p>
+            <p className="text-base font-bold">🧹 데이터 클리닝</p>
+            <p className="text-xs text-blue-200 mt-0.5">결측치·이상치를 처리하면 분석이 더 정확해집니다</p>
+          </div>
+          <ArrowRight className="w-6 h-6 shrink-0" />
         </button>
         {!canProceed && (
           <p className="text-center text-xs text-red-500">📅 날짜와 💰 매출 컬럼은 반드시 설정해야 합니다.</p>
