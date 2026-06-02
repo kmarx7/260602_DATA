@@ -1,4 +1,4 @@
-import { UploadCloud, BarChart2, GitBranch, TrendingUp } from 'lucide-react'
+import { UploadCloud, BarChart2, GitBranch, TrendingUp, AlertTriangle } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 export interface MenuItem {
@@ -24,19 +24,25 @@ export const menuItems: MenuItem[] = [
     requiresData: true,
     href: '/dashboard/analysis',
   },
-  // 추후 메뉴 추가 예정
-  // {
-  //   id: 'correlation',
-  //   label: '상관관계 분석',
-  //   icon: GitBranch,
-  //   requiresData: true,
-  //   href: '/dashboard/correlation',
-  // },
-  // {
-  //   id: 'distribution',
-  //   label: '분포 분석',
-  //   icon: TrendingUp,
-  //   requiresData: true,
-  //   href: '/dashboard/distribution',
-  // },
+  {
+    id: 'missing',
+    label: '결측치 분석',
+    icon: AlertTriangle,
+    requiresData: true,
+    href: '/dashboard/missing',
+  },
+  {
+    id: 'distribution',
+    label: '분포 분석',
+    icon: TrendingUp,
+    requiresData: true,
+    href: '/dashboard/distribution',
+  },
+  {
+    id: 'correlation',
+    label: '상관관계 분석',
+    icon: GitBranch,
+    requiresData: true,
+    href: '/dashboard/correlation',
+  },
 ]
