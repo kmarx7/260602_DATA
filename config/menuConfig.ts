@@ -1,4 +1,4 @@
-import { UploadCloud, BarChart2, GitBranch, TrendingUp, AlertTriangle } from 'lucide-react'
+import { UploadCloud, BarChart2, GitBranch, TrendingUp, AlertTriangle, Wand2 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 export interface MenuItem {
@@ -7,6 +7,7 @@ export interface MenuItem {
   icon: LucideIcon
   requiresData: boolean
   href: string
+  group?: string
 }
 
 export const menuItems: MenuItem[] = [
@@ -16,6 +17,7 @@ export const menuItems: MenuItem[] = [
     icon: UploadCloud,
     requiresData: false,
     href: '/dashboard/upload',
+    group: '데이터',
   },
   {
     id: 'basic-analysis',
@@ -23,6 +25,7 @@ export const menuItems: MenuItem[] = [
     icon: BarChart2,
     requiresData: true,
     href: '/dashboard/analysis',
+    group: '탐색',
   },
   {
     id: 'missing',
@@ -30,6 +33,15 @@ export const menuItems: MenuItem[] = [
     icon: AlertTriangle,
     requiresData: true,
     href: '/dashboard/missing',
+    group: '탐색',
+  },
+  {
+    id: 'treatment',
+    label: '결측치 처리',
+    icon: Wand2,
+    requiresData: true,
+    href: '/dashboard/treatment',
+    group: '처리',
   },
   {
     id: 'distribution',
@@ -37,6 +49,7 @@ export const menuItems: MenuItem[] = [
     icon: TrendingUp,
     requiresData: true,
     href: '/dashboard/distribution',
+    group: '분석',
   },
   {
     id: 'correlation',
@@ -44,5 +57,6 @@ export const menuItems: MenuItem[] = [
     icon: GitBranch,
     requiresData: true,
     href: '/dashboard/correlation',
+    group: '분석',
   },
 ]

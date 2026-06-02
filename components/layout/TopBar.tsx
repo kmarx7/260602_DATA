@@ -1,7 +1,7 @@
 'use client'
 
 import { useDatasetStore } from '@/store/datasetStore'
-import { FileSpreadsheet } from 'lucide-react'
+import { FileSpreadsheet, Wand2 } from 'lucide-react'
 
 function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`
@@ -10,7 +10,7 @@ function formatBytes(bytes: number): string {
 }
 
 export default function TopBar() {
-  const { fileName, fileSize, totalRows, totalCols, totalNulls } = useDatasetStore()
+  const { fileName, fileSize, totalRows, totalCols, totalNulls, isTreated } = useDatasetStore()
 
   return (
     <header className="h-12 px-6 flex items-center gap-6 bg-white border-b border-zinc-200 shrink-0">
@@ -38,6 +38,12 @@ export default function TopBar() {
               개
             </span>
           </div>
+          {isTreated && (
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-100 text-green-700 text-xs font-medium">
+              <Wand2 className="w-3 h-3" />
+              결측치 처리 적용됨
+            </div>
+          )}
         </>
       ) : (
         <span className="text-sm text-zinc-400">파일을 업로드하면 데이터 요약이 여기에 표시됩니다.</span>
