@@ -1,28 +1,22 @@
 'use client'
 
 import { useDatasetStore } from '@/store/datasetStore'
-import MissingTreatment from '@/components/analysis/MissingTreatment'
-import { Wand2 } from 'lucide-react'
-import Link from 'next/link'
+import DataCleaning from '@/components/analysis/DataCleaning'
+import { NoDataGuard } from '@/components/features/shared'
 
 export default function TreatmentPage() {
   const hasData = useDatasetStore((s) => s.fileName !== null)
-  if (!hasData) {
-    return (
-      <div className="flex flex-col items-center justify-center h-full gap-4">
-        <Wand2 className="w-16 h-16 text-zinc-300" />
-        <h2 className="text-xl font-semibold text-zinc-600">데이터가 없습니다</h2>
-        <Link href="/dashboard/upload" className="text-blue-500 underline text-sm">파일 업로드하기</Link>
-      </div>
-    )
-  }
+  if (!hasData) return <NoDataGuard />
   return (
     <div className="space-y-4 max-w-full">
       <div>
-        <h1 className="text-base font-semibold text-zinc-700">결측치 처리</h1>
-        <p className="text-xs text-zinc-400 mt-0.5">처리 방법을 선택하고 적용하면 이후 모든 분석이 처리된 데이터 기준으로 계산됩니다.</p>
+        <h1 className="text-lg font-bold text-zinc-800">데이터 클리닝</h1>
+        <p className="text-sm text-zinc-500 mt-0.5">
+          결측치와 이상치를 처리한 뒤 분석하면 더 정확한 결과를 얻을 수 있습니다.
+          처리 후 모든 분석이 깨끗한 데이터를 기준으로 동작합니다.
+        </p>
       </div>
-      <MissingTreatment />
+      <DataCleaning />
     </div>
   )
 }

@@ -20,7 +20,7 @@ export const menuItems: MenuItem[] = [
   { id: 'analysis',      label: '기본 데이터 분석',  icon: BarChart2,        requiresData: true,  requiresConfig: false, href: '/dashboard/analysis',      group: '탐색' },
   { id: 'missing',       label: '결측치 분석',       icon: AlertTriangle,    requiresData: true,  requiresConfig: false, href: '/dashboard/missing',       group: '탐색' },
   // ── 처리 ──────────────────────────────
-  { id: 'treatment',     label: '결측치 처리',       icon: Wand2,            requiresData: true,  requiresConfig: false, href: '/dashboard/treatment',     group: '처리' },
+  { id: 'treatment',     label: '데이터 클리닝',      icon: Wand2,            requiresData: true,  requiresConfig: false, href: '/dashboard/treatment',     group: '처리' },
   // ── 10가지 분석 ──────────────────────
   { id: 'trends',        label: '월별·계절 트렌드',  icon: TrendingUp,       requiresData: true,  requiresConfig: true,  href: '/dashboard/trends',        group: '분석' },
   { id: 'weekday',       label: '요일별 패턴',       icon: Calendar,         requiresData: true,  requiresConfig: true,  href: '/dashboard/weekday',       group: '분석' },
